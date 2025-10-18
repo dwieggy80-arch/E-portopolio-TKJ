@@ -1,0 +1,177 @@
+/* -- 1. Variabel & Reset Dasar -- */
+:root {
+    --primary-color: #007bff; /* Biru TKJ */
+    --accent-color: #ffc107; /* Kuning Aksen */
+    --background-color: #f8f9fa;
+    --text-dark: #343a40;
+    --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-dark);
+    perspective: 1500px; /* Penting untuk efek 3D */
+}
+
+/* -- 2. Header Profil -- */
+.profile-header {
+    background: linear-gradient(135deg, #0056b3, var(--primary-color));
+    color: white;
+    text-align: center;
+    padding: 60px 20px 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-photo-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--accent-color);
+    animation: pulseBorder 1.5s infinite alternate; /* Animasi Keren: Border berdenyut */
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-header h1 { font-size: 2.5em; margin: 0; }
+.profile-header h2 { font-size: 1.2em; font-weight: 400; opacity: 0.8; margin-bottom: 20px; }
+
+/* Animasi Keren: Border berdenyut */
+@keyframes pulseBorder {
+    from { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4); }
+    to { box-shadow: 0 0 0 10px rgba(255, 193, 7, 0); }
+}
+
+.social-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s, transform 0.3s;
+}
+.social-links a:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* -- 3. Bagian Proyek (Grid) -- */
+.projects-section {
+    padding: 50px 5%;
+    text-align: center;
+}
+.projects-section h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* -- 4. Kartu Proyek (Project Card) -- */
+.project-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1.15), box-shadow 0.6s;
+    cursor: pointer;
+    position: relative;
+    border-bottom: 5px solid var(--primary-color);
+}
+
+/* ======================================= */
+/* ====== ANIMASI HOVER 3D UNIK ====== */
+/* ======================================= */
+.project-card:hover {
+    transform: translateY(-10px) rotateX(2deg) scale(1.03); /* Naik, miring sedikit ke depan, membesar */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Gambar Sampul Proyek */
+.project-image-wrapper {
+    height: 200px;
+    overflow: hidden;
+}
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Animasi Keren: Zoom Gambar saat Hover */
+.project-card:hover .project-image {
+    transform: scale(1.1);
+    filter: brightness(0.9);
+}
+
+/* Konten Deskripsi */
+.project-content {
+    padding: 20px;
+}
+
+.project-content h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.4em;
+}
+
+.project-content .tags span {
+    display: inline-block;
+    background-color: #e9ecef;
+    color: var(--text-dark);
+    font-size: 0.8em;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Animasi Keren: Tag berubah warna saat hover */
+.project-card:hover .tags span {
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+}
+
+.project-content a.detail-button {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.project-content a.detail-button:hover {
+    color: var(--accent-color);
+}
+
+/* -- 5. Footer -- */
+footer {
+    background-color: var(--text-dark);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9em;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
